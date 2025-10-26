@@ -18,11 +18,11 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ icon, domain, title, de
     <div className="absolute left-[-9px] sm:left-0 bg-white border-2 border-slate-300 group-hover:border-sky-400 p-2 rounded-full text-sky-500 transition-all duration-300 transform group-hover:scale-110">
       {icon}
     </div>
-    <div className="flex items-center mb-1 sm:mb-0">
+    <div className="flex flex-col-reverse sm:flex-row sm:justify-between sm:items-baseline">
       <h3 className="text-lg font-bold text-slate-800">{title}</h3>
+      <span className="text-xs font-semibold uppercase text-sky-600/80 tracking-wider mb-1 sm:mb-0 sm:ml-4">{domain}</span>
     </div>
     <p className="text-slate-600 mt-2 sm:mt-1 text-sm">{description}</p>
-    <span className="absolute top-6 right-0 text-xs font-semibold uppercase text-sky-600/80 tracking-wider">{domain}</span>
   </div>
 );
 
