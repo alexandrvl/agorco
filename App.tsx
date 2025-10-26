@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import Experience from './components/Experience';
+import WorkingPrinciples from './components/WorkingPrinciples';
 import RAndD from './components/RAndD';
 import Footer from './components/Footer';
 
@@ -14,6 +15,7 @@ const App: React.FC = () => {
         <Hero />
         <Services />
         <Experience />
+        <WorkingPrinciples />
         <RAndD />
       </main>
       <Footer />
