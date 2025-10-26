@@ -15,7 +15,7 @@ interface ExperienceItemProps {
 const ExperienceItem: React.FC<ExperienceItemProps> = ({ icon, domain, title, description }) => (
   <div className="relative pl-8 sm:pl-12 py-6 group">
     <div className="absolute left-0 sm:left-4 h-full w-px bg-slate-200 group-hover:bg-sky-400 transition-colors duration-300"></div>
-    <div className="absolute left-[-9px] sm:left-0 bg-white border-2 border-slate-300 group-hover:border-sky-400 p-2 rounded-full text-sky-500 transition-all duration-300 transform group-hover:scale-110">
+    <div className="absolute left-[-22px] sm:left-0 bg-white border-2 border-slate-300 group-hover:border-sky-400 p-2 rounded-full text-sky-500 transition-all duration-300 transform group-hover:scale-110">
       {icon}
     </div>
     <div className="flex flex-col-reverse sm:flex-row sm:justify-between sm:items-baseline">
