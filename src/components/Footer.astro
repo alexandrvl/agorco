@@ -1,0 +1,43 @@
+---
+import LinkedInIcon from './icons/LinkedInIcon.astro';
+import EmailIcon from './icons/EmailIcon.astro';
+
+interface Props {
+  class?: string;
+  [key: string]: any;
+}
+const { class: className = '', ...rest } = Astro.props as Props;
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class={`bg-slate-100 border-t border-slate-200 ${className}`} {...rest}>
+  <div class="container mx-auto px-6 py-8">
+    <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+      <div class="mb-4 md:mb-0">
+        <h3 class="text-xl font-bold text-slate-900">agorco</h3>
+        <p class="text-slate-600 text-sm">Enterprise Software Consultancy</p>
+      </div>
+      <div class="flex items-center space-x-6 mb-4 md:mb-0">
+        <a 
+          href="mailto:dev@agorco.com" 
+          class="flex items-center gap-2 text-slate-500 hover:text-sky-500 transition-colors"
+          aria-label="Email Address"
+        >
+          <EmailIcon class="w-5 h-5" />
+          <span class="text-sm font-medium">dev@agorco.com</span>
+        </a>
+        <a 
+          href="https://ee.linkedin.com/in/aleksandr-gortujev-57a822144" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="text-slate-500 hover:text-sky-500 transition-colors"
+          aria-label="LinkedIn Profile"
+        >
+          <LinkedInIcon class="w-6 h-6" />
+        </a>
+      </div>
+      <p class="text-sm text-slate-500">&copy; {currentYear} Agorco. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

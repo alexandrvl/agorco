@@ -1,0 +1,58 @@
+---
+import JavaIcon from './icons/JavaIcon.astro';
+import KubernetesIcon from './icons/KubernetesIcon.astro';
+import GrafanaIcon from './icons/GrafanaIcon.astro';
+import DataIcon from './icons/DataIcon.astro';
+
+interface Props {
+  class?: string;
+  [key: string]: any;
+}
+const { class: className = '', ...rest } = Astro.props as Props;
+
+const servicesData = [
+  {
+    icon: JavaIcon,
+    title: "Enterprise Development",
+    description: "Building scalable, high-performance backend systems with modern Java technologies and microservices architecture.",
+    tech: ["Java", "Spring Boot", "Kafka", "RabbitMQ", "CI/CD"]
+  },
+  {
+    icon: KubernetesIcon,
+    title: "Cloud & Operations",
+    description: "Full support for operational use cases, including deployment, scaling, and APM monitoring on cloud-native platforms.",
+    tech: ["Kubernetes", "Grafana", "Prometheus", "New Relic", "Kibana APM"]
+  },
+  {
+    icon: DataIcon,
+    title: "Big Data & Engineering",
+    description: "Designing and implementing efficient data pipelines and optimizing storage for real-time analytics and large-scale processing.",
+    tech: ["Google Dataflow", "Apache Iceberg", "Trino", "DuckDB", "Pandas", "dbt", "Data Vault 2.0", "Daft", "pyiceberg"]
+  }
+];
+---
+
+<section id="services" class={`py-20 bg-slate-100 border-y border-slate-200 ${className}`} {...rest}>
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Core Expertise</h2>
+      <p class="text-lg text-slate-600 mt-2">Specialized services to elevate your technological capabilities.</p>
+    </div>
+    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+      {servicesData.map(service => (
+        <div class="bg-white p-6 rounded-lg border border-slate-200 hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="bg-sky-100 p-3 rounded-full text-sky-600">
+              <service.icon class="w-6 h-6" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-800">{service.title}</h3>
+          </div>
+          <p class="text-slate-600 mb-4">{service.description}</p>
+          <div>
+            {service.tech.map(t => <span class="inline-block bg-slate-200 text-slate-700 text-xs font-medium mr-2 mb-2 px-2.5 py-1 rounded-full">{t}</span>)}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

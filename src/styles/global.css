@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* Tailwind v4 theme configuration */
+@theme {
+  --font-sans: 'Inter', sans-serif;
+}
+
+/* Any custom global styles can live here */

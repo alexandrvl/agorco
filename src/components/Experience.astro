@@ -1,0 +1,77 @@
+---
+import RetailIcon from './icons/RetailIcon.astro';
+import GamingIcon from './icons/GamingIcon.astro';
+import LogisticsIcon from './icons/LogisticsIcon.astro';
+import FintechIcon from './icons/FintechIcon.astro';
+import UtilitiesIcon from './icons/UtilitiesIcon.astro';
+
+interface Props {
+  class?: string;
+  [key: string]: any;
+}
+const { class: className = '', ...rest } = Astro.props as Props;
+
+interface ExperienceItem {
+  icon: any;
+  domain: string;
+  title: string;
+  description: string;
+}
+
+const experiences: ExperienceItem[] = [
+  { 
+    icon: RetailIcon, 
+    domain: "Retail", 
+    title: "Self-Payment Kiosks", 
+    description: "Architected and developed self-service payment solutions and integrated with various payment gateways." 
+  },
+  { 
+    icon: GamingIcon, 
+    domain: "Gaming", 
+    title: "Real-Time Fraud Detection", 
+    description: "Built high-throughput systems for detecting fraudulent activities in real-time within the gaming industry." 
+  },
+  { 
+    icon: LogisticsIcon, 
+    domain: "Logistics", 
+    title: "Geo-Information Systems", 
+    description: "Developed geo-information systems for tracking and optimizing routes for a major logistics company." 
+  },
+  { 
+    icon: FintechIcon, 
+    domain: "FinTech", 
+    title: "ATM Network Infrastructure", 
+    description: "Designed and implemented the backend infrastructure for a new ATM network for a financial technology startup." 
+  },
+  { 
+    icon: UtilitiesIcon, 
+    domain: "Utilities", 
+    title: "Smart Meter Integrations", 
+    description: "Led the integration of smart meters for electricity utility services, enabling real-time data collection and analysis." 
+  },
+];
+---
+
+<section id="experience" class={`py-20 bg-white ${className}`} {...rest}>
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Proven Domain Experience</h2>
+      <p class="text-lg text-slate-600 mt-2">Applying technical skills to solve real-world business challenges.</p>
+    </div>
+    <div class="max-w-3xl mx-auto">
+      {experiences.map((exp, index) => (
+        <div key={index} class="relative pl-8 sm:pl-12 py-6 group">
+          <div class="absolute left-0 sm:left-4 h-full w-px bg-slate-200 group-hover:bg-sky-400 transition-colors duration-300"></div>
+          <div class="absolute left-[-22px] sm:left-0 bg-white border-2 border-slate-300 group-hover:border-sky-400 p-2 rounded-full text-sky-500 transition-all duration-300 transform group-hover:scale-110">
+            <exp.icon class="w-6 h-6" />
+          </div>
+          <div class="flex flex-col-reverse sm:flex-row sm:justify-between sm:items-baseline">
+            <h3 class="text-lg font-bold text-slate-800">{exp.title}</h3>
+            <span class="text-xs font-semibold uppercase text-sky-600/80 tracking-wider mb-1 sm:mb-0 sm:ml-4">{exp.domain}</span>
+          </div>
+          <p class="text-slate-600 mt-2 sm:mt-1 text-sm">{exp.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
