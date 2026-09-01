@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://agorco.com/sitemap.xml

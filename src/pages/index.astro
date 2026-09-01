@@ -2,24 +2,21 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import Services from '../components/Services.astro';
 import Experience from '../components/Experience.astro';
-import WorkingPrinciples from '../components/WorkingPrinciples.astro';
-import RAndD from '../components/RAndD.astro';
+import Offer from '../components/Offer.astro';
+import Tech from '../components/Tech.astro';
+import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout 
-  title="Agorco - Software Consultancy" 
-  description="Expert-led enterprise software consultancy in Java, Big Data, and Cloud-Native technologies."
->
+<Layout>
   <Header />
-  <main>
+  <main id="main">
     <Hero />
-    <Services />
     <Experience />
-    <WorkingPrinciples />
-    <RAndD />
+    <Offer />
+    <Tech />
+    <Contact />
   </main>
   <Footer />
 </Layout>

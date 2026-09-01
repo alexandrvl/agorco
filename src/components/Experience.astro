@@ -1,9 +1,16 @@
 ---
-import RetailIcon from './icons/RetailIcon.astro';
+import { Picture } from 'astro:assets';
+import FintechIcon from './icons/FintechIcon.astro';
 import GamingIcon from './icons/GamingIcon.astro';
 import LogisticsIcon from './icons/LogisticsIcon.astro';
-import FintechIcon from './icons/FintechIcon.astro';
+import RetailIcon from './icons/RetailIcon.astro';
 import UtilitiesIcon from './icons/UtilitiesIcon.astro';
+import MeterDataFlow from './MeterDataFlow.astro';
+import { site } from '../data/site';
+import workRetail from '../assets/work/work-retail.png';
+import workLogistics from '../assets/work/work-logistics.png';
+import workSport from '../assets/work/work-sport.png';
+import workLending from '../assets/work/work-lending.png';
 
 interface Props {
   class?: string;
@@ -11,67 +18,124 @@ interface Props {
 }
 const { class: className = '', ...rest } = Astro.props as Props;
 
-interface ExperienceItem {
-  icon: any;
-  domain: string;
-  title: string;
-  description: string;
-}
+const proof = site.work.featured;
 
-const experiences: ExperienceItem[] = [
-  { 
-    icon: RetailIcon, 
-    domain: "Retail", 
-    title: "Self-Payment Kiosks", 
-    description: "Architected and developed self-service payment solutions and integrated with various payment gateways." 
-  },
-  { 
-    icon: GamingIcon, 
-    domain: "Gaming", 
-    title: "Real-Time Fraud Detection", 
-    description: "Built high-throughput systems for detecting fraudulent activities in real-time within the gaming industry." 
-  },
-  { 
-    icon: LogisticsIcon, 
-    domain: "Logistics", 
-    title: "Geo-Information Systems", 
-    description: "Developed geo-information systems for tracking and optimizing routes for a major logistics company." 
-  },
-  { 
-    icon: FintechIcon, 
-    domain: "FinTech", 
-    title: "ATM Network Infrastructure", 
-    description: "Designed and implemented the backend infrastructure for a new ATM network for a financial technology startup." 
-  },
-  { 
-    icon: UtilitiesIcon, 
-    domain: "Utilities", 
-    title: "Smart Meter Integrations", 
-    description: "Led the integration of smart meters for electricity utility services, enabling real-time data collection and analysis." 
-  },
-];
+const alsoIcons = {
+  retail: RetailIcon,
+  logistics: LogisticsIcon,
+  gaming: GamingIcon,
+  fintech: FintechIcon,
+} as const;
+
+const alsoImages = {
+  retail: workRetail,
+  logistics: workLogistics,
+  sport: workSport,
+  lending: workLending,
+} as const;
 ---
 
-<section id="experience" class={`py-20 bg-white ${className}`} {...rest}>
-  <div class="container mx-auto px-6">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Proven Domain Experience</h2>
-      <p class="text-lg text-slate-600 mt-2">Applying technical skills to solve real-world business challenges.</p>
-    </div>
-    <div class="max-w-3xl mx-auto">
-      {experiences.map((exp, index) => (
-        <div key={index} class="relative pl-8 sm:pl-12 py-6 group">
-          <div class="absolute left-0 sm:left-4 h-full w-px bg-slate-200 group-hover:bg-sky-400 transition-colors duration-300"></div>
-          <div class="absolute left-[-22px] sm:left-0 bg-white border-2 border-slate-300 group-hover:border-sky-400 p-2 rounded-full text-sky-500 transition-all duration-300 transform group-hover:scale-110">
-            <exp.icon class="w-6 h-6" />
+<section id="work" class={`scroll-mt-24 border-t border-line ${className}`} {...rest}>
+  <div class="site-wrap section">
+    <p class="eyebrow">Work</p>
+    <h2 class="section-title">{site.work.heading}</h2>
+
+    <div class="mt-8 grid gap-6">
+      <article class="card p-0">
+        <dl class="grid gap-px border-b border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+          {proof.metrics.map((metric) => (
+            <div class="flex min-w-0 flex-col-reverse bg-canvas p-4">
+              <dt class="mt-1 text-sm text-muted">{metric.label}</dt>
+              <dd class="text-xl font-semibold tracking-tight text-ink tabular-nums sm:text-2xl">{metric.value}</dd>
+            </div>
+          ))}
+        </dl>
+        <div class="p-6 md:p-8">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-2 text-accent">
+              <UtilitiesIcon class="h-4 w-4 shrink-0" />
+              <span class="text-xs font-semibold uppercase tracking-[0.16em]">{proof.domain}</span>
+            </div>
+            <p class="text-base tabular-nums text-muted">{proof.years}</p>
           </div>
-          <div class="flex flex-col-reverse sm:flex-row sm:justify-between sm:items-baseline">
-            <h3 class="text-lg font-bold text-slate-800">{exp.title}</h3>
-            <span class="text-xs font-semibold uppercase text-sky-600/80 tracking-wider mb-1 sm:mb-0 sm:ml-4">{exp.domain}</span>
+          <h3 class="statement mt-4">{proof.title}</h3>
+          <p class="mt-1 text-base text-muted">{proof.org}</p>
+          <ul class="mt-4 flex flex-wrap gap-1.5">
+            {proof.tags.map((tag) => (
+              <li class="border border-line px-2 py-0.5 text-xs text-muted">{tag}</li>
+            ))}
+          </ul>
+          <MeterDataFlow class="mt-6" />
+          <div class="mt-8 grid gap-6">
+            <div>
+              <p class="eyebrow">Constraint</p>
+              <p class="text-base leading-relaxed text-ink">{proof.constraint}</p>
+            </div>
+            <div>
+              <p class="eyebrow">Value</p>
+              <ul class="mt-3 grid gap-5 sm:grid-cols-2">
+                {proof.values.map((item) => (
+                  <li>
+                    <p class="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+                      {item.kicker}
+                    </p>
+                    <p class="statement mt-1 text-base">{item.statement}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p class="eyebrow">Return</p>
+              <p class="statement text-base">{proof.result}</p>
+            </div>
+            <p class="text-sm leading-relaxed text-muted">{proof.tools}</p>
           </div>
-          <p class="text-slate-600 mt-2 sm:mt-1 text-sm">{exp.description}</p>
         </div>
-      ))}
+      </article>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {site.work.also.map((item) => {
+          const Icon = alsoIcons[item.icon];
+          const image = alsoImages[item.image];
+          const focalClass =
+            item.image === 'lending'
+              ? 'object-[82%_center]'
+              : item.image === 'logistics'
+                ? 'object-[32%_center]'
+                : 'object-center';
+          return (
+            <article class="card">
+              <div class="flex items-center justify-between gap-4">
+                <div class="flex min-w-0 items-center gap-2 text-accent">
+                  <Icon class="h-4 w-4 shrink-0" />
+                  <span class="text-xs font-semibold uppercase tracking-[0.16em]">{item.domain}</span>
+                </div>
+                <p class="shrink-0 text-base tabular-nums text-muted">{item.years}</p>
+              </div>
+              <Picture
+                src={image}
+                formats={['avif', 'webp']}
+                fallbackFormat="webp"
+                widths={[400, 720, 960]}
+                sizes="(max-width: 767px) calc(100vw - 4.5rem), (max-width: 1024px) calc(50vw - 4rem), 420px"
+                alt={item.imageAlt}
+                class:list={['mt-4 h-36 w-full border border-line object-cover sm:h-40', focalClass]}
+              />
+              <h3 class="statement mt-4 text-base">{item.title}</h3>
+              <p class="mt-1 text-base text-muted">{item.org}</p>
+              <p class="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-accent">{item.metric}</p>
+              <p class="mt-3 text-base leading-relaxed text-ink">
+                <span class="text-muted">Constraint. </span>
+                {item.constraint}
+              </p>
+              <p class="mt-3 text-base leading-relaxed text-ink">
+                <span class="text-muted">Return. </span>
+                {item.result}
+              </p>
+            </article>
+          );
+        })}
+      </div>
     </div>
   </div>
 </section>

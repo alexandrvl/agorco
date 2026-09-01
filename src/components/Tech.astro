@@ -1,0 +1,57 @@
+---
+import { site } from '../data/site';
+import ADRIcon from './icons/ADRIcon.astro';
+import C4Icon from './icons/C4Icon.astro';
+import DataIcon from './icons/DataIcon.astro';
+import GrafanaIcon from './icons/GrafanaIcon.astro';
+import JavaIcon from './icons/JavaIcon.astro';
+import KubernetesIcon from './icons/KubernetesIcon.astro';
+
+interface Props {
+  class?: string;
+  [key: string]: any;
+}
+const { class: className = '', ...rest } = Astro.props as Props;
+const stack = site.stack;
+const techHref = Object.fromEntries(stack.techLinks.map((link) => [link.name, link.url]));
+
+const stackIcons = {
+  Java: JavaIcon,
+  Kubernetes: KubernetesIcon,
+  Grafana: GrafanaIcon,
+  'Apache Iceberg': DataIcon,
+  C4: C4Icon,
+  'Architecture Decision Records': ADRIcon,
+} as const;
+---
+
+<section id="stack" class={`scroll-mt-24 border-t border-line ${className}`} {...rest}>
+  <div class="site-wrap section">
+    <p class="eyebrow">Stack</p>
+    <h2 class="section-title">{stack.heading}</h2>
+    <p class="section-lead">{stack.lead}</p>
+    <ul class="stack-list" aria-label="Technical stack">
+      {stack.items.map((item) => {
+        const href = techHref[item];
+        const Icon = stackIcons[item as keyof typeof stackIcons];
+        const inner = (
+          <>
+            {Icon && <Icon class="h-3.5 w-3.5 shrink-0" aria-hidden="true" />}
+            {item}
+          </>
+        );
+        return (
+          <li>
+            {href ? (
+              <a href={href} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5">
+                {inner}
+              </a>
+            ) : (
+              inner
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+---
+import { mailtoHref, site } from '../data/site';
+import LinkedInIcon from './icons/LinkedInIcon.astro';
+import EmailIcon from './icons/EmailIcon.astro';
+
+interface Props {
+  class?: string;
+  [key: string]: any;
+}
+const { class: className = '', ...rest } = Astro.props as Props;
+---
+
+<section id="contact" class={`scroll-mt-24 border-t border-line bg-surface ${className}`} {...rest}>
+  <div class="site-wrap section">
+    <p class="eyebrow">Contact</p>
+    <h2 class="section-title">{site.contact.heading}</h2>
+    <p class="section-lead">{site.contact.lead}</p>
+
+    <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
+      <a
+        href={mailtoHref()}
+        class="inline-flex min-h-11 max-w-full items-center justify-center gap-2 break-all bg-accent px-5 py-2.5 text-base font-semibold text-accent-fg hover:opacity-90 sm:break-normal"
+      >
+        <EmailIcon class="h-5 w-5 shrink-0" />
+        {site.email}
+      </a>
+      <a
+        href={site.linkedIn}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex min-h-11 items-center gap-2 border border-line bg-canvas px-6 py-3 text-base font-medium text-ink hover:border-accent"
+      >
+        <LinkedInIcon class="h-4 w-4" />
+        {site.linkedInLabel}
+      </a>
+    </div>
+  </div>
+</section>

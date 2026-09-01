@@ -1,0 +1,37 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  class?: string;
+  [key: string]: any;
+}
+const { class: className = '', ...rest } = Astro.props as Props;
+const steps = site.work.featured.flow;
+---
+
+<figure class={`meter-flow ${className}`} {...rest}>
+  <figcaption class="sr-only">
+    Meter data path from field hardware to the market before 10:00
+  </figcaption>
+  <ol class="meter-flow-list">
+    {steps.map((step, index) => (
+      <li class="meter-flow-step">
+        {index > 0 && (
+          <span class="meter-flow-join" aria-hidden="true">
+            <svg class="meter-flow-chevron-down h-4 w-4 md:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6" />
+            </svg>
+            <svg class="meter-flow-chevron-right hidden h-4 w-4 md:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6" />
+            </svg>
+          </span>
+        )}
+        <div class="meter-flow-card">
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-accent">{step.kicker}</p>
+          <p class="mt-1 text-base font-semibold tracking-tight text-ink">{step.title}</p>
+          <p class="mt-1 text-sm leading-snug text-muted">{step.note}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+</figure>

@@ -1,8 +1,127 @@
 @import "tailwindcss";
 
-/* Tailwind v4 theme configuration */
 @theme {
-  --font-sans: 'Inter', sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-line: var(--line);
 }
 
-/* Any custom global styles can live here */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #0c0d10;
+  --surface: #16181f;
+  --ink: #f3efe6;
+  --muted: #9b968c;
+  --accent: #5ec8f0;
+  --accent-fg: #071018;
+  --line: #2c303a;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --canvas: #f4f1ea;
+  --surface: #ffffff;
+  --ink: #16181d;
+  --muted: #5e5b54;
+  --accent: #0369a1;
+  --accent-fg: #f8fafc;
+  --line: #ddd8ce;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  background-color: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.site-wrap {
+  @apply mx-auto w-full max-w-5xl px-4 sm:px-6;
+}
+
+.section {
+  @apply py-12 md:py-16;
+}
+
+.eyebrow {
+  @apply mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-accent;
+}
+
+.section-title {
+  @apply text-2xl font-semibold tracking-tight text-ink md:text-3xl;
+}
+
+.section-lead {
+  @apply mt-2 text-base leading-relaxed text-ink;
+}
+
+.card {
+  @apply border border-line bg-canvas p-6;
+}
+
+.card picture {
+  @apply block;
+}
+
+.card-grid {
+  @apply mt-8 grid gap-6 md:grid-cols-3;
+}
+
+.statement {
+  @apply text-lg font-semibold leading-snug tracking-tight text-ink;
+}
+
+.hero-proof {
+  @apply mt-3 text-sm text-muted;
+}
+
+.hero-proof a {
+  @apply text-muted underline-offset-4 hover:text-ink hover:underline;
+}
+
+.stack-list {
+  @apply mt-8 flex flex-wrap gap-2;
+}
+
+.stack-list li {
+  @apply inline-flex items-center gap-1.5 border border-line bg-canvas px-3 py-1.5 text-sm text-muted;
+}
+
+.meter-flow-list {
+  @apply grid gap-0 md:grid-cols-4 md:gap-0;
+}
+
+.meter-flow-step {
+  @apply relative flex flex-col md:min-w-0;
+}
+
+.meter-flow-join {
+  @apply flex items-center justify-center py-1 text-accent md:absolute md:top-1/2 md:left-0 md:z-10 md:-translate-x-1/2 md:-translate-y-1/2 md:py-0 md:bg-surface;
+}
+
+.meter-flow-step:first-child .meter-flow-join {
+  @apply hidden;
+}
+
+.meter-flow-card {
+  @apply border border-line bg-canvas p-3 md:p-4;
+}
+
+.stack-list a {
+  @apply text-muted hover:text-ink;
+}

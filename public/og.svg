@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0c0d10"/>
+  <text x="80" y="250" fill="#5ec8f0" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="600" letter-spacing="4">AGORCO</text>
+  <text x="80" y="340" fill="#f3efe6" font-family="ui-sans-serif, system-ui, sans-serif" font-size="42" font-weight="600">We build IT products</text>
+  <text x="80" y="400" fill="#f3efe6" font-family="ui-sans-serif, system-ui, sans-serif" font-size="42" font-weight="600">for your business domain</text>
+  <text x="80" y="470" fill="#9b968c" font-family="ui-sans-serif, system-ui, sans-serif" font-size="28">Software studio · Estonia · Aleksandr Gortujev</text>
+  <rect x="80" y="490" width="72" height="3" fill="#5ec8f0"/>
+</svg>
