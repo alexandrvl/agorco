@@ -18,14 +18,14 @@ export const site = {
     initials: "AG",
     role: "Principal — product, architecture, delivery",
     location: "Tallinn, Estonia",
-    line: "One-principal studio with a bench of senior architects, developers, and product managers. Building production systems since 2007.",
+    line: "Senior architects, developers, and product managers on the bench. Production systems since 2007.",
     photoAlt:
       "Over-the-shoulder view of architects at a whiteboard sketching an MDM C4 diagram: HES to MDM to TSO and billing, with containers for ingestion, TSO-gw, and billing exchange",
   },
   hero: {
     eyebrow: "Software studio · Tallinn, Estonia",
     heading: "We build data-intensive IT products.",
-    lead: "One principal and a senior bench. Energy, retail, logistics, and lending are where we have already shipped — the stack and the domain practice apply in other companies as well.",
+    lead: "Energy, retail, logistics, and lending are where we have shipped. The same stack and domain practice apply in other companies.",
     proof: {
       href: "#work",
       items: [
